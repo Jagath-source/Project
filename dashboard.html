@@ -6,7 +6,7 @@
   <title>Dashboard - Internship Evaluation</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="dashboard">
+<body data-page="dashboard" class="with-sidebar">
   <header class="app-header">
     <div class="brand">Internship Evaluation</div>
     <nav class="nav">
@@ -18,6 +18,15 @@
       <button id="logoutBtn" class="btn subtle">Logout</button>
     </nav>
   </header>
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">IE</div>
+    <a href="dashboard.html" class="sidebar-link active">🏠 Dashboard</a>
+    <a href="progress.html" class="sidebar-link">📈 Progress</a>
+    <a href="assessments.html" class="sidebar-link">🧮 Assessments</a>
+    <a href="company.html" class="sidebar-link">🏢 Company</a>
+    <a href="feedback.html" class="sidebar-link">💬 Feedback</a>
+  </aside>
 
   <main class="container">
     <h1>Dashboard</h1>
@@ -37,6 +46,13 @@
       <div class="card stat">
         <div class="stat-value" id="totalFeedback">0</div>
         <div class="stat-label">Feedback Items</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Overall Progress</h2>
+      <div class="progress" aria-label="Overall progress">
+        <div class="bar" id="overallProgressBar"></div>
       </div>
     </section>
 

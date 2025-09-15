@@ -83,6 +83,8 @@ function initDashboard() {
       ? Math.round(assessmentEntries.reduce((s, a) => s + Number(a.score || 0), 0) / assessmentEntries.length)
       : 0;
     avgAssessment.textContent = String(avg);
+    const bar = document.getElementById('overallProgressBar');
+    if (bar) bar.style.width = Math.max(0, Math.min(100, avg)) + '%';
   }
 
   if (recentActivity) {
@@ -105,11 +107,16 @@ function initProgressPage() {
     tableBody.innerHTML = '';
     list.forEach((item, idx) => {
       const tr = document.createElement('tr');
+      const statusBadge = item.status === 'Completed'
+        ? '<span class="badge success dot">Completed</span>'
+        : item.status === 'Blocked'
+        ? '<span class="badge warning dot">Blocked</span>'
+        : '<span class="badge info dot">In Progress</span>';
       tr.innerHTML = `
         <td>${item.date}</td>
-        <td>${item.hours}</td>
+        <td><span class="chip">${item.hours} h</span></td>
         <td>${item.task}</td>
-        <td>${item.status}</td>
+        <td>${statusBadge}</td>
         <td>
           <button class="btn subtle" data-action="edit" data-idx="${idx}">Edit</button>
           <button class="btn danger" data-action="delete" data-idx="${idx}">Delete</button>
@@ -178,9 +185,10 @@ function initAssessmentsPage() {
     tableBody.innerHTML = '';
     list.forEach((item, idx) => {
       const tr = document.createElement('tr');
+      const gradeChip = `<span class="chip">${item.score}</span>`;
       tr.innerHTML = `
         <td>${item.date}</td>
-        <td>${item.score}</td>
+        <td>${gradeChip}</td>
         <td>${item.evaluator}</td>
         <td>${item.comments}</td>
         <td>
@@ -292,8 +300,8 @@ function initFeedbackPage() {
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>${item.message}</td>
-        <td>${item.category}</td>
-        <td>${item.rating}</td>
+        <td><span class="chip">${item.category}</span></td>
+        <td><span class="chip">${item.rating}/5</span></td>
         <td>${new Date(item.createdAt).toLocaleString()}</td>
         <td>
           <button class="btn subtle" data-action="edit" data-idx="${idx}">Edit</button>
