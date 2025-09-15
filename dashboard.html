@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Internship Evaluation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+  <header class="app-header">
+    <div class="brand">Internship Evaluation</div>
+    <nav class="nav">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="progress.html">Progress</a>
+      <a href="assessments.html">Assessments</a>
+      <a href="company.html">Company</a>
+      <a href="feedback.html">Feedback</a>
+      <button id="logoutBtn" class="btn subtle">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Dashboard</h1>
+    <section class="grid stats">
+      <div class="card stat">
+        <div class="stat-value" id="totalProgress">0</div>
+        <div class="stat-label">Progress Entries</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-value" id="totalAssessments">0</div>
+        <div class="stat-label">Assessments</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-value" id="avgAssessment">0</div>
+        <div class="stat-label">Avg. Assessment Score</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-value" id="totalFeedback">0</div>
+        <div class="stat-label">Feedback Items</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Recent Activity</h2>
+      <div class="activity" id="recentActivity"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

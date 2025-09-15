@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company - Internship Evaluation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="company">
+  <header class="app-header">
+    <div class="brand">Internship Evaluation</div>
+    <nav class="nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="progress.html">Progress</a>
+      <a href="assessments.html">Assessments</a>
+      <a href="company.html" class="active">Company</a>
+      <a href="feedback.html">Feedback</a>
+      <button id="logoutBtn" class="btn subtle">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Company & Mentor Details</h1>
+    <section class="card">
+      <form id="companyForm" class="form grid two-col">
+        <div class="form-row span-2">
+          <label for="cName">Company Name</label>
+          <input type="text" id="cName" required>
+        </div>
+        <div class="form-row">
+          <label for="cMentor">Mentor Name</label>
+          <input type="text" id="cMentor" required>
+        </div>
+        <div class="form-row">
+          <label for="cEmail">Mentor Email</label>
+          <input type="email" id="cEmail" required>
+        </div>
+        <div class="form-row">
+          <label for="cPhone">Mentor Phone</label>
+          <input type="tel" id="cPhone" pattern="[0-9\-\+\s]{7,}" required>
+        </div>
+        <div class="form-row span-2">
+          <label for="cAddress">Address</label>
+          <textarea id="cAddress" rows="3" required></textarea>
+        </div>
+        <div class="form-actions span-2">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" id="clearCompany" class="btn danger">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Current Profile</h2>
+      <div id="companyPreview" class="preview muted">No data saved yet.</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
+
+

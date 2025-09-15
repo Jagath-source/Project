@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - Internship Evaluation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="feedback">
+  <header class="app-header">
+    <div class="brand">Internship Evaluation</div>
+    <nav class="nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="progress.html">Progress</a>
+      <a href="assessments.html">Assessments</a>
+      <a href="company.html">Company</a>
+      <a href="feedback.html" class="active">Feedback</a>
+      <button id="logoutBtn" class="btn subtle">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Feedback</h1>
+    <section class="card">
+      <form id="feedbackForm" class="form grid two-col">
+        <div class="form-row span-2">
+          <label for="fMessage">Message</label>
+          <textarea id="fMessage" rows="3" placeholder="Write feedback or concerns" required></textarea>
+        </div>
+        <div class="form-row">
+          <label for="fCategory">Category</label>
+          <select id="fCategory" required>
+            <option value="General">General</option>
+            <option value="Technical">Technical</option>
+            <option value="Mentorship">Mentorship</option>
+            <option value="Logistics">Logistics</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="fRating">Satisfaction (1-5)</label>
+          <input type="number" id="fRating" min="1" max="5" step="1" required>
+        </div>
+        <div class="form-actions span-2">
+          <button type="submit" class="btn primary">Submit</button>
+          <button type="button" id="clearFeedback" class="btn danger">Clear All</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Feedback List</h2>
+      <div class="table-responsive">
+        <table class="table" id="feedbackTable">
+          <thead>
+            <tr>
+              <th>Message</th>
+              <th>Category</th>
+              <th>Rating</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

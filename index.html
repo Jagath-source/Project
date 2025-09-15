@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Evaluation - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="login">
+  <main class="container auth-container">
+    <section class="card">
+      <h1>Internship Evaluation Portal</h1>
+      <p class="muted">Sign in to monitor progress, assessments, and feedback</p>
+      <form id="loginForm" class="form">
+        <div class="form-row">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter username" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn primary w-100">Login</button>
+        <p id="loginError" class="error" role="alert" aria-live="polite" hidden>Invalid credentials. Try again.</p>
+      </form>
+      <div class="muted small">
+        <p><strong>Demo credentials</strong>: <code>intern</code> / <code>evaluate123</code></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
