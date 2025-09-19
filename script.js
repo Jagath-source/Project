@@ -42,10 +42,10 @@ function writeList(key, list) {
   localStorage.setItem(key, JSON.stringify(list));
 }
 
+/* ---------- LOGIN ---------- */
 function initLoginPage() {
   const form = document.getElementById('loginForm');
   if (!form) return;
-  // If already logged in, go to dashboard
   if (getSessionUser()) {
     window.location.href = 'dashboard.html';
     return;
@@ -64,6 +64,20 @@ function initLoginPage() {
   });
 }
 
+/* ---------- DASHBOARD ---------- */
+function animateCounter(el, end) {
+  let start = 0;
+  const step = Math.ceil(end / 50);
+  const interval = setInterval(() => {
+    start += step;
+    if (start >= end) {
+      start = end;
+      clearInterval(interval);
+    }
+    el.textContent = start;
+  }, 20);
+}
+
 function initDashboard() {
   const progressEntries = readList(STORAGE_KEYS.progress);
   const assessmentEntries = readList(STORAGE_KEYS.assessments);
@@ -75,14 +89,16 @@ function initDashboard() {
   const totalFeedback = document.getElementById('totalFeedback');
   const recentActivity = document.getElementById('recentActivity');
 
-  if (totalProgress) totalProgress.textContent = String(progressEntries.length);
-  if (totalAssessments) totalAssessments.textContent = String(assessmentEntries.length);
-  if (totalFeedback) totalFeedback.textContent = String(feedbackEntries.length);
+  if (totalProgress) animateCounter(totalProgress, progressEntries.length);
+  if (totalAssessments) animateCounter(totalAssessments, assessmentEntries.length);
+  if (totalFeedback) animateCounter(totalFeedback, feedbackEntries.length);
+
   if (avgAssessment) {
     const avg = assessmentEntries.length
       ? Math.round(assessmentEntries.reduce((s, a) => s + Number(a.score || 0), 0) / assessmentEntries.length)
       : 0;
-    avgAssessment.textContent = String(avg);
+    animateCounter(avgAssessment, avg);
+
     const bar = document.getElementById('overallProgressBar');
     if (bar) bar.style.width = Math.max(0, Math.min(100, avg)) + '%';
   }
@@ -96,6 +112,7 @@ function initDashboard() {
   }
 }
 
+/* ---------- PROGRESS ---------- */
 function initProgressPage() {
   const form = document.getElementById('progressForm');
   const tableBody = document.querySelector('#progressTable tbody');
@@ -174,6 +191,7 @@ function initProgressPage() {
   render();
 }
 
+/* ---------- ASSESSMENTS ---------- */
 function initAssessmentsPage() {
   const form = document.getElementById('assessmentForm');
   const tableBody = document.querySelector('#assessmentsTable tbody');
@@ -248,6 +266,7 @@ function initAssessmentsPage() {
   render();
 }
 
+/* ---------- COMPANY ---------- */
 function initCompanyPage() {
   const form = document.getElementById('companyForm');
   const preview = document.getElementById('companyPreview');
@@ -287,6 +306,7 @@ function initCompanyPage() {
   render();
 }
 
+/* ---------- FEEDBACK ---------- */
 function initFeedbackPage() {
   const form = document.getElementById('feedbackForm');
   const tableBody = document.querySelector('#feedbackTable tbody');
@@ -358,6 +378,7 @@ function initFeedbackPage() {
   render();
 }
 
+/* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   guardAuthenticatedPages();
   attachLogout();
@@ -369,5 +390,3 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'company') initCompanyPage();
   if (page === 'feedback') initFeedbackPage();
 });
-
-
